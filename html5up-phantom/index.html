@@ -197,7 +197,7 @@
 						<div class="inner">
 							<section>
 								<h2>Get in touch</h2>
-								<form method="post" action="#">
+								<form id="contact-form">
 									<div class="fields">
 										<div class="field half">
 											<input type="text" name="name" id="name" placeholder="Name" />
@@ -241,6 +241,23 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("NzA21urzf_cWzM6Rv"); // Inserisci il tuo user ID EmailJS
+    })();
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      emailjs.sendForm('service_o4sxmji', 'template_f9p4ynt', this)
+        .then(function() {
+          console.log('SUCCESS!');
+        }, function(error) {
+          console.log('FAILED...', error);
+        });
+    });
+  </script>
 
 	</body>
 </html>
